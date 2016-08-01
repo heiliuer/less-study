@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<p>使用webstorm file watcher自动编译less</p>
+<img class="content-img" src="webstorm-less-filewatcher.png" width="100px" alt="">
+<div class="box">
+    hello <span>world</span>
+</div>
+<script>
+    var img = document.querySelector(".content-img");
+    var classList = img.classList;
+    var s = "orig-size";
+    img.onclick = function () {
+        classList[(Array.prototype.indexOf.call(classList, s) != -1 ? "remove" : "add")](s)
+    }
+</script>
+</body>
+</html>

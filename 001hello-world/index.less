@@ -1,0 +1,30 @@
+//定义变量
+@base: #ff0000;
+//定义方法
+.color(@style,@c) when (iscolor(@c)) {
+  box-shadow: @style @c;
+  color: @c;
+}
+
+//color定义方法 参数@alpha自定义默认值
+.color(@style,@alpha:50%) when (isnumber(@alpha)) {
+  .color(@style, lighten(@base, @alpha));
+}
+
+@img-width: 200px;
+
+.content-img {
+  width: @img-width;
+}
+
+.orig-size {
+  width: inherit !important;
+}
+
+.box {
+  color: saturate(@base, 5%);
+  border-color: lighten(@base, 30%);
+  span {
+    .color(0 0 5px, 30%)
+  }
+}
