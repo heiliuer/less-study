@@ -1,0 +1,175 @@
+//Variables
+@nice-blue: #5B83AD;
+@light-blue: @nice-blue+#111;
+#header {
+  color: @light-blue;
+}
+
+//
+
+//Mixins
+.bordered {
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+
+#menu {
+  color: #111;
+  .bordered;
+}
+
+//
+
+//Nested Rules
+#nested-rules {
+  color: black;
+  .ed {
+    color: #0000cc;
+  }
+  .rules {
+    color: #e2066c;
+  }
+  &.bg-green {
+    background-color: #e0caca;
+  }
+  &:after {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #5B83AD;
+  }
+}
+
+//
+
+//Nested Directives and Bubbling
+.screen-color {
+  @media screen {
+    color: green;
+    @media (min-width: 768px) {
+      color: red;
+    }
+  }
+  @media tv {
+    color: black;
+  }
+}
+
+//
+
+//Operations
+@conversion-1: 5cm+10mm;
+@conversion-2: 2-3cm-5cm;
+@conversion-3: 2cm*3mm;
+@incompatible-units: 2+5px-3cm;
+@base: 5%;
+@filler: @base*2;
+@other: @base+@filler;
+@color: #221122;
+.operation {
+  color: @color+#444;
+  width: @conversion-1;
+  height: @conversion-2;
+  border: @incompatible-units;
+  margin-bottom: @conversion-3;
+  padding-bottom: @base;
+  padding-left: @filler;
+  padding-right: @other;
+}
+
+//
+
+//Escaping
+.weird-element {
+  content: ~"'//content Escaping'";
+}
+
+//Functions
+@base: #f04615;
+@width: 0.5;
+.class {
+  width: percentage(@width);
+  color: saturate(@base, 5%); //饱和度
+  background-color: spin(lighten(@base, 25%), 8);
+}
+
+//
+
+//Namespaces and Accessors
+#bundle {
+  .button {
+    color: #111;
+  }
+}
+
+#header a {
+  #bundle> .button; //使用命名空间访问
+}
+
+//
+
+//Scope
+@var: red;
+#page {
+  @var: white;
+  #header {
+    color: @var; //作用域，编译器会寻找最近的变量（变量同名时）
+  }
+}
+
+//
+
+//Comments
+//
+
+//Variable Selectors
+@my-selectors: banner;
+.@{my-selectors} {
+  color: #fff;
+}
+
+//
+
+//Variable URLs
+@my-path: "../../images";
+body {
+  background-image: url("@{my-path}/bg.png");
+}
+
+//
+
+//Import Statements
+@themes: "./";
+@import "@{themes}/index.less";
+//
+
+//Properties
+@property: color;
+.widget {
+    @{property}: #3ee;
+  background-@{property}: #999;
+}
+
+//Variable Names
+@f1: "I am less";
+@f2: "f1";
+.tt:after {
+  content: @@f2;
+}
+
+//
+
+//Lazy Loading
+.lazy-eval {
+  width: @eval-var;
+  @a: 7%;
+}
+
+@eval-var: @a;
+@a: 8%;
+//
+
+@import "lib.css";
+@base-color: red;
+
