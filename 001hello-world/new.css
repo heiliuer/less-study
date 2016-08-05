@@ -1,0 +1,14 @@
+.content-img {
+  width: 200px;
+}
+.orig-size {
+  width: inherit !important;
+}
+.box {
+  color: #ff0000;
+  border-color: #ff9999;
+}
+.box span {
+  box-shadow: 0 0 5px #ff9999;
+  color: #ff9999;
+}

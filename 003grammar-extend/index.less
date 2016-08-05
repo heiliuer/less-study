@@ -1,0 +1,54 @@
+// Extend
+nav ul {
+  &:extend(.inline b);
+  background: blue;
+}
+
+.inline b {
+  color: red;
+}
+
+//
+
+//Extend Syntax
+.b .q {
+  border: 1px;
+}
+
+.b {
+  color: #ccc;
+}
+
+.a:extend(.b) {
+}
+
+.c {
+  &:extend(.b);
+}
+
+.d:extend(.b all) {
+  // extends all instances of ".b" e.g. ".q.b" or ".b.q"
+}
+//
+
+
+//Extend Attached to Selector
+.g,
+.h,.i:extend(.b),
+.j:extend(.q all){
+}
+//
+
+//Extend Nested Selectors
+.bucket{
+  tr &{
+    color:blue;
+  }
+}
+.extend-nested:extend(tr .bucket){
+}
+//
+
+//
+
+
