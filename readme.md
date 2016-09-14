@@ -5,5 +5,5 @@
 ### 需要用webstorm编码
 ### 安装less
 npm install -g less
-## 配置file watcher
+## 配置webstorm file watcher，自动编译less
 ![no](001hello-world/webstorm-less-filewatcher.png)
